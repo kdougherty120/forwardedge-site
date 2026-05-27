@@ -139,6 +139,24 @@
     color: var(--color-mist);
   }
   @media (max-width: 860px) { .compare { grid-template-columns: 1fr; } }
+
+  /* Dark section overrides */
+  .surface-black .steps { border-color: rgba(244,241,235,.15); }
+  .surface-black .steps .step { background: rgba(255,255,255,.04); border-top-color: rgba(244,241,235,.1); }
+  .surface-black .steps .step:hover { background: rgba(255,255,255,.09); border-left-color: var(--color-edge); }
+  .surface-black .steps .step h3 { color: var(--color-paper); }
+  .surface-black .steps .step p { color: rgba(244,241,235,.68); }
+
+  .surface-black .compare > div { background: rgba(255,255,255,.06); }
+  .surface-black .compare > div.themBg { background: rgba(255,255,255,.03); }
+  .surface-black .compare h3 { color: var(--color-paper); }
+  .surface-black .compare h4 { color: rgba(244,241,235,.4); }
+  .surface-black .compare h4.us { color: var(--color-edge); }
+  .surface-black .compare li { color: rgba(244,241,235,.72); border-top-color: rgba(244,241,235,.1); }
+  .surface-black .compare li.them { color: rgba(244,241,235,.32); }
+  .surface-black .compare li.them::before { color: rgba(244,241,235,.2); }
+
+  .surface-black .section-head .deck { color: rgba(244,241,235,.7); }
 </style>
 </head>
 <body>
@@ -185,7 +203,7 @@
 </section>
 
 <!-- The four steps (uses .steps from styles.css) -->
-<section class="section-pad surface-paper">
+<section class="section-pad surface-black">
   <div class="container">
     <div class="section-head reveal">
       <span class="num">/ 01 APPROACH</span>
@@ -296,7 +314,7 @@
 </section>
 
 <!-- Compare us vs them -->
-<section class="section-pad surface-paper">
+<section class="section-pad surface-black">
   <div class="container">
     <div class="section-head reveal">
       <span class="num">/ 03 WHY US</span>

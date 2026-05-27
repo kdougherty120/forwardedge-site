@@ -103,6 +103,19 @@
   @media (max-width: 640px) {
     .deliverables { grid-template-columns: 1fr; }
   }
+
+  /* Dark area overrides — surface-black sections */
+  .surface-black .area-l h2 { color: var(--color-paper); }
+  .surface-black .area-l .lede { color: rgba(244,241,235,.72); }
+  .surface-black .area-num { color: var(--color-edge); }
+  .surface-black .area-r .body p { color: rgba(244,241,235,.72); }
+  .surface-black .deliverables .d {
+    background: rgba(255,255,255,.07);
+    border-color: var(--color-edge);
+    color: var(--color-paper);
+  }
+  .surface-black .deliverables .d strong { color: rgba(244,241,235,.45); }
+  .surface-black .imgslot { border: 1px solid rgba(244,241,235,.12); }
 </style>
 </head>
 <body>
@@ -177,7 +190,7 @@
 </section>
 
 <!-- 02 Cyber Readiness -->
-<section class="area surface-stone" id="cyber">
+<section class="area surface-black" id="cyber">
   <div class="container">
     <div class="area-row reveal">
       <div class="area-l">
@@ -231,7 +244,7 @@
 </section>
 
 <!-- 04 AI Governance -->
-<section class="area surface-stone" id="ai-gov">
+<section class="area surface-black" id="ai-gov">
   <div class="container">
     <div class="area-row reveal">
       <div class="area-l">
@@ -285,7 +298,7 @@
 </section>
 
 <!-- 06 Change Management -->
-<section class="area surface-stone" id="change">
+<section class="area surface-black" id="change">
   <div class="container">
     <div class="area-row reveal">
       <div class="area-l">
