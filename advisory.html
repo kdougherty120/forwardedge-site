@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Advisory Areas · Forward Edge</title>
+<link rel="icon" href="assets/fe-mark-black.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .area {
+    padding: clamp(56px, 7vw, 112px) 0;
+    border-top: var(--rule);
+  }
+  .area-row {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(32px, 5vw, 96px);
+    align-items: start;
+  }
+  .area-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(96px, 13vw, 200px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    color: var(--color-edge);
+    margin: 0;
+  }
+  .area-l {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 96px;
+  }
+  .area-l h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--color-black);
+    max-width: 14ch;
+  }
+  .area-l h2 em { font-style: italic; }
+  .area-l .lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--color-graphite);
+    margin: 0;
+    max-width: 38ch;
+  }
+  .area-r {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .area-r .imgslot {
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  .area-r .body p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-graphite);
+    margin: 0 0 18px;
+  }
+  .area-r .body p:last-child { margin: 0; }
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .deliverables .d {
+    padding: 18px 22px;
+    background: var(--color-bone);
+    border-radius: var(--r-sm);
+    border-left: 2px solid var(--color-edge);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .deliverables .d strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-graphite);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  @media (max-width: 1100px) {
+    .area-row { grid-template-columns: 1fr; }
+    .area-l { position: static; }
+  }
+  @media (max-width: 640px) {
+    .deliverables { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Forward Edge — home">
+      <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="advisory.html" class="is-current">Advisory</a>
+      <a href="how-we-work.html">Approach</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="nav-status"><span class="dot-edge"></span>Briefing — Fall '26</span>
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="meta">
+      <span class="eyebrow">Where we focus</span>
+      <span class="mono">FE — 200 · ADVISORY AREAS</span>
+    </div>
+    <h1>Six <em>advisory</em> areas.<br/>One team<span class="stop">.</span></h1>
+    <div class="deck">
+      <p>
+        Our advisory areas reflect the most pressing challenges facing government technology
+        leaders today. Each is led by a senior practitioner. Each pairs with a clear,
+        defensible deliverable &mdash; not a 300-slide deck.
+      </p>
+      <div class="side">
+        <div><span class="mono">Engagements</span><span class="val">2–12 weeks</span></div>
+        <div><span class="mono">Senior on-site</span><span class="val">Always</span></div>
+        <div><span class="mono">Advisory posture</span><span class="val">Independent</span></div>
+        <div><span class="mono">Deliverable</span><span class="val">Memo, not deck</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 Zero-Trust -->
+<section class="area surface-paper" id="zero-trust">
+  <div class="container">
+    <div class="area-row reveal">
+      <div class="area-l">
+        <span class="mono">/ 01 ADVISORY AREA</span>
+        <p class="area-num">01</p>
+        <h2>Zero-Trust <em>Architecture</em></h2>
+        <p class="lede">Roadmaps grounded in your real infrastructure &mdash; not reference blueprints.</p>
+      </div>
+      <div class="area-r">
+        <div class="imgslot photo architectural"><img src="assets/photos/adv-zero-trust-2.jpg" alt="" class="photo-img" /><span class="placeholder-tag">Photo · ARCHITECTURAL · 16:10</span><div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+        <div class="body">
+          <p>Most zero-trust programs fail in year two because the year-one roadmap was written against a reference architecture, not the actual one. We pressure-test the plan against your network topology, your identity providers, your unsanctioned shadow IT, and your political reality &mdash; alongside the partners and specialists already engaged.</p>
+          <p>The output is a sequenced, defensible roadmap that survives the next budget hearing and the next CIO. Not a 200-page document. A working memo your team can execute against.</p>
+        </div>
+        <div class="deliverables">
+          <div class="d"><strong>Deliverable</strong>Pressure-tested zero-trust roadmap (memo format)</div>
+          <div class="d"><strong>Timeline</strong>6–10 weeks</div>
+          <div class="d"><strong>Senior lead</strong>Partner, every meeting</div>
+          <div class="d"><strong>Defensibility</strong>Built for the budget hearing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Cyber Readiness -->
+<section class="area surface-stone" id="cyber">
+  <div class="container">
+    <div class="area-row reveal">
+      <div class="area-l">
+        <span class="mono">/ 02 ADVISORY AREA</span>
+        <p class="area-num">02</p>
+        <h2>Cybersecurity Readiness <em>Assessments</em></h2>
+        <p class="lede">Surface your true risk posture &mdash; without the delay of a full audit cycle.</p>
+      </div>
+      <div class="area-r">
+        <div class="imgslot photo atmospheric"><img src="assets/photos/adv-cyber-2.jpg" alt="" class="photo-img" /><span class="placeholder-tag">Photo · ATMOSPHERIC · 16:10</span><div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+        <div class="body">
+          <p>A full security audit takes 12–18 months. Most agencies cannot wait. Our readiness assessments deliver an independent, prioritized risk picture in 4–6 weeks &mdash; surfacing what's truly exposed, what's defensible, and what the next inspector general will see first.</p>
+          <p>The product is a short, ranked report with three things you should do this quarter, three things you should fund next year, and the conversations to have with leadership in the meantime.</p>
+        </div>
+        <div class="deliverables">
+          <div class="d"><strong>Deliverable</strong>Prioritized risk memo + executive readout</div>
+          <div class="d"><strong>Timeline</strong>4–6 weeks</div>
+          <div class="d"><strong>Audience</strong>CIO, CISO, agency head, oversight</div>
+          <div class="d"><strong>Posture</strong>Independent · senior-led</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 IV&V -->
+<section class="area surface-paper" id="ivv">
+  <div class="container">
+    <div class="area-row reveal">
+      <div class="area-l">
+        <span class="mono">/ 03 ADVISORY AREA</span>
+        <p class="area-num">03</p>
+        <h2>IV&amp;V &mdash;<br/><em>Independent Verification &amp; Validation</em></h2>
+        <p class="lede">Objective, senior-led oversight of major technology programs.</p>
+      </div>
+      <div class="area-r">
+        <div class="imgslot photo cool"><img src="assets/photos/adv-ivv-2.jpg" alt="" class="photo-img" /><span class="placeholder-tag">Photo · COOL TONE · 16:10</span><div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+        <div class="body">
+          <p>When the project is too big to fail, the IV&amp;V is too important to outsource to a junior team. Our IV&amp;V engagements are led by partners who have personally delivered programs at the scale of the one they're now reviewing &mdash; meaning we ask the questions your delivery team didn't think to ask, and your steering committee can't.</p>
+          <p>We protect your investment by catching architectural drift, scope inflation, and delivery slippage before they become quarter-over-quarter line items in your risk register.</p>
+        </div>
+        <div class="deliverables">
+          <div class="d"><strong>Deliverable</strong>Quarterly IV&amp;V memo + on-demand reads</div>
+          <div class="d"><strong>Timeline</strong>Program-length retainer</div>
+          <div class="d"><strong>Reports to</strong>Steering committee, oversight board</div>
+          <div class="d"><strong>Independence</strong>Senior, accountable, partnership-aware</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 AI Governance -->
+<section class="area surface-stone" id="ai-gov">
+  <div class="container">
+    <div class="area-row reveal">
+      <div class="area-l">
+        <span class="mono">/ 04 ADVISORY AREA</span>
+        <p class="area-num">04</p>
+        <h2>AI Governance <em>Frameworks</em></h2>
+        <p class="lede">Practical structures that balance innovation, accountability, and compliance.</p>
+      </div>
+      <div class="area-r">
+        <div class="imgslot photo warm"><img src="assets/photos/adv-ai-gov.jpg" alt="" class="photo-img" /><span class="placeholder-tag">Photo · WARM TONE · 16:10</span><div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+        <div class="body">
+          <p>Every agency now needs an answer to "what is your AI governance posture?" &mdash; from the legislature, from the inspector general, from constituents whose benefits decisions are increasingly model-mediated. Most agencies do not have a real one. We build it.</p>
+          <p>Not as a policy binder nobody reads, but as a working operating model: who decides, who veto-stops, what gets logged, what gets published, what gets refused. The kind of framework a chief AI officer can defend in their first hearing.</p>
+        </div>
+        <div class="deliverables">
+          <div class="d"><strong>Deliverable</strong>AI operating model + governance memo</div>
+          <div class="d"><strong>Timeline</strong>6–8 weeks</div>
+          <div class="d"><strong>Audience</strong>Agency head, CAIO, counsel</div>
+          <div class="d"><strong>Tested for</strong>Hearings, audits, FOIA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Data Readiness -->
+<section class="area surface-paper" id="data">
+  <div class="container">
+    <div class="area-row reveal">
+      <div class="area-l">
+        <span class="mono">/ 05 ADVISORY AREA</span>
+        <p class="area-num">05</p>
+        <h2>Data Readiness for <em>AI Adoption</em></h2>
+        <p class="lede">Know if your data is ready &mdash; before you commit to a platform.</p>
+      </div>
+      <div class="area-r">
+        <div class="imgslot photo architectural"><img src="assets/photos/adv-data.jpg" alt="" class="photo-img" /><span class="placeholder-tag">Photo · ARCHITECTURAL · 16:10</span><div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+        <div class="body">
+          <p>The most expensive AI mistake is the one you make at procurement &mdash; signing a platform contract on top of data that cannot support it. Our data readiness assessments map your data assets, pipelines, classification, lineage, and gaps against the AI use cases you're actually considering.</p>
+          <p>You leave the engagement knowing which pilots are real, which are at least eighteen months out, and which were never going to work without a platform replacement first.</p>
+        </div>
+        <div class="deliverables">
+          <div class="d"><strong>Deliverable</strong>Readiness rubric + go/no-go memo per use case</div>
+          <div class="d"><strong>Timeline</strong>4–8 weeks</div>
+          <div class="d"><strong>Audience</strong>CIO, CDO, program owners</div>
+          <div class="d"><strong>Stops</strong>Bad procurements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Change Management -->
+<section class="area surface-stone" id="change">
+  <div class="container">
+    <div class="area-row reveal">
+      <div class="area-l">
+        <span class="mono">/ 06 ADVISORY AREA</span>
+        <p class="area-num">06</p>
+        <h2>Stakeholder Alignment &amp;<br/><em>Change Management</em></h2>
+        <p class="lede">Build executive consensus. Prepare the workforce. Sustain change.</p>
+      </div>
+      <div class="area-r">
+        <div class="imgslot photo atmospheric"><img src="assets/photos/adv-change.jpg" alt="" class="photo-img" /><span class="placeholder-tag">Photo · ATMOSPHERIC · 16:10</span><div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+        <div class="body">
+          <p>Every technology change is a people change first. We run structured workshops and embedded engagements that build executive alignment, prepare the workforce that has to use the new system, and sustain the change after the consultants leave &mdash; which, in our case, is sooner than you're used to.</p>
+          <p>The work is unglamorous. The work is also the difference between a successful program and a year-three rebrand of the same problem.</p>
+        </div>
+        <div class="deliverables">
+          <div class="d"><strong>Deliverable</strong>Alignment plan + change playbook</div>
+          <div class="d"><strong>Timeline</strong>8–16 weeks</div>
+          <div class="d"><strong>Audience</strong>Executive team + front-line</div>
+          <div class="d"><strong>Format</strong>Workshops, not training</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dark manifesto -->
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-meta">
+      <span class="mono">— OUR POSTURE</span>
+      <span class="mono">FE-200 / END</span>
+    </div>
+    <h2>
+      Independent advice.<br/>
+      Senior on every engagement.<br/>
+      <em>Memos, not 300-slide decks.</em>
+    </h2>
+    <div class="manifesto-foot">
+      <span class="attr">— FORWARDEDGE · WHAT YOU GET</span>
+      <a href="contact.html"><span class="arrow-circle">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- End CTA -->
+<section class="section-pad surface-paper">
+  <div class="container end-cta">
+    <div class="row reveal">
+      <h3>Have a <em>specific</em> question<br/>about one of these?</h3>
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+        <p>Forward intelligence for the public sector.</p>
+        <div class="footer-coords">ATL · 33.7490°N · 84.3880°W</div>
+      </div>
+      <div class="footer-col">
+        <h4>Advisory</h4>
+        <ul>
+          <li><a href="#zero-trust">Zero-Trust</a></li>
+          <li><a href="#cyber">Cyber Readiness</a></li>
+          <li><a href="#ivv">IV&amp;V</a></li>
+          <li><a href="#ai-gov">AI Governance</a></li>
+          <li><a href="#data">Data Readiness</a></li>
+          <li><a href="#change">Change Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="how-we-work.html">How we work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Start a Conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@forwardedge.co">hello@forwardedge.co</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span class="mono">© 2026 Forward Edge Advisory · ATL</span>
+      <span class="mono">A WOMEN-OWNED · MINORITY-LED FIRM · LAUNCHING FALL '26</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

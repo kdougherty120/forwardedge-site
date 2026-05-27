@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Start a Conversation · Forward Edge</title>
+<link rel="icon" href="assets/fe-mark-black.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(32px, 5vw, 96px);
+    align-items: start;
+  }
+  @media (max-width: 1100px) { .contact-row { grid-template-columns: 1fr; } }
+
+  .contact-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .contact-aside .block {
+    padding: 22px 22px 22px 20px;
+    border-left: 3px solid var(--color-edge);
+    background: var(--color-paper);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    box-shadow: 0 2px 12px -4px rgba(20,16,12,0.10);
+    transition: border-left-width .2s, box-shadow .2s;
+  }
+  .contact-aside .block:hover {
+    border-left-width: 5px;
+    box-shadow: 0 4px 24px -8px rgba(20,16,12,0.18);
+  }
+  .contact-aside .block h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    margin: 0 0 8px;
+    color: var(--color-black);
+  }
+  .contact-aside .block h3 em { font-style: italic; color: var(--color-edge); }
+  .contact-aside .block p { font-size: 15px; line-height: 1.55; color: var(--color-graphite); margin: 0; }
+  .contact-aside .block a {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--color-edge);
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  .chat-stub {
+    background: var(--color-paper);
+    border-radius: var(--r-md);
+    padding: clamp(24px, 3vw, 32px);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .chat-stub .dot-edge { margin-right: 0; }
+  .chat-stub-text h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin: 0 0 4px;
+  }
+  .chat-stub-text h4 em { font-style: italic; }
+  .chat-stub-text p { font-size: 13px; color: var(--color-smoke); margin: 0; }
+  .chat-stub button {
+    margin-left: auto;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Forward Edge — home">
+      <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="advisory.html">Advisory</a>
+      <a href="how-we-work.html">Approach</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="nav-status"><span class="dot-edge"></span>Briefing — Fall '26</span>
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="meta">
+      <span class="eyebrow">Start a conversation</span>
+      <span class="mono">FE — 500 · CONTACT</span>
+    </div>
+    <h1>Tell us what<br/>you're <em>actually</em> working on<span class="stop">.</span></h1>
+    <div class="deck">
+      <p>
+        A partner reads every inbound. We respond within one business day &mdash; from a real
+        name, not an inbox. No marketing follow-up loop. No sales sequence. If we're the right
+        fit, we'll say so. If we're not, we'll tell you who is.
+      </p>
+      <div class="side">
+        <div><span class="mono">Response time</span><span class="val">≤ 1 business day</span></div>
+        <div><span class="mono">Reads</span><span class="val">Senior partner</span></div>
+        <div><span class="mono">Calls</span><span class="val">By invitation</span></div>
+        <div><span class="mono">Sequence</span><span class="val">None</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Form + aside -->
+<section class="section-pad surface-paper">
+  <div class="container">
+    <div class="contact-row reveal">
+
+      <!-- FORM -->
+      <form class="form" id="contact-form" onsubmit="event.preventDefault(); const b = this.querySelector('button[type=submit]'); b.textContent = 'Sent ✓ — A partner will reply within one business day.'; b.disabled = true; this.style.opacity='0.75';">
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Full name" required />
+          </div>
+          <div class="field">
+            <label for="role">Role / title</label>
+            <input id="role" name="role" type="text" placeholder="CIO, program director, etc." />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@agency.gov" required />
+          </div>
+          <div class="field">
+            <label for="org">Agency / organization</label>
+            <input id="org" name="org" type="text" placeholder="State of Georgia · DOAS" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="area">Advisory area</label>
+          <select id="area" name="area">
+            <option value="">— Choose one (optional)</option>
+            <option>Zero-Trust Architecture</option>
+            <option>Cybersecurity Readiness Assessments</option>
+            <option>IV&amp;V</option>
+            <option>AI Governance Frameworks</option>
+            <option>Data Readiness for AI Adoption</option>
+            <option>Stakeholder Alignment &amp; Change Management</option>
+            <option>Not sure yet — want to scope</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="brief">What are you working on?</label>
+          <textarea id="brief" name="brief" placeholder="One paragraph is plenty. What's the problem, who's involved, and what would success look like in 90 days?"></textarea>
+        </div>
+
+        <div class="form-foot">
+          <span class="mono">— A partner reads every inbound.</span>
+          <button type="submit" class="btn btn-primary">Send brief<span class="btn-arrow">↗</span></button>
+        </div>
+      </form>
+
+      <!-- ASIDE -->
+      <aside class="contact-aside">
+        <div class="photo warm is-soft" style="aspect-ratio: 4/5; border-radius: var(--r-md); margin-bottom: 8px;">
+          <img src="assets/photos/contact-side.jpg" alt="" class="photo-img" />
+        </div>
+        <div class="block">
+          <h3>Email <em>directly</em>.</h3>
+          <p>Skip the form. Go partner-to-inbox.</p>
+          <a href="mailto:hello@forwardedge.co">hello@forwardedge.co</a>
+        </div>
+        <div class="block">
+          <h3>Where we <em>work</em>.</h3>
+          <p>Atlanta-headquartered. On-site in Georgia. Embedded across state, local, and federal engagements.</p>
+        </div>
+        <div class="block">
+          <h3>What <em>not</em> to send.</h3>
+          <p>RFPs you'd like us to respond to before scoping. Sales pitches. Partnership decks. We work for the agency, not the vendor.</p>
+        </div>
+        <div class="block">
+          <h3>For <em>press &amp; speaking</em>.</h3>
+          <p>Inquiries to press@forwardedge.co.</p>
+        </div>
+
+        <!-- Chat stub - placeholder for future chat function -->
+        <div class="chat-stub">
+          <span class="dot-edge"></span>
+          <div class="chat-stub-text">
+            <h4>Live chat <em>coming soon</em>.</h4>
+            <p>An advisor on-demand. We're piloting in Fall '26.</p>
+          </div>
+          <button class="btn btn-ghost" disabled style="opacity:.7;cursor:not-allowed;">Notify me</button>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- Manifesto dark break -->
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-meta">
+      <span class="mono">— OUR COMMITMENT</span>
+      <span class="mono">FE-500 / END</span>
+    </div>
+    <h2>
+      Every inbound gets a <em>read</em>.<br/>
+      Every read gets a reply.<br/>
+      Every reply has a <em>name</em>.
+    </h2>
+    <div class="manifesto-foot">
+      <span class="attr">— SHEA CAMERON · FOUNDER &amp; CEO</span>
+      <a href="#contact-form"><span class="arrow-circle">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+        <p>Forward intelligence for the public sector.</p>
+        <div class="footer-coords">ATL · 33.7490°N · 84.3880°W</div>
+      </div>
+      <div class="footer-col">
+        <h4>Advisory</h4>
+        <ul>
+          <li><a href="advisory.html#zero-trust">Zero-Trust</a></li>
+          <li><a href="advisory.html#cyber">Cyber Readiness</a></li>
+          <li><a href="advisory.html#ivv">IV&amp;V</a></li>
+          <li><a href="advisory.html#ai-gov">AI Governance</a></li>
+          <li><a href="advisory.html#data">Data Readiness</a></li>
+          <li><a href="advisory.html#change">Change Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="how-we-work.html">How we work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Start a Conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@forwardedge.co">hello@forwardedge.co</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span class="mono">© 2026 Forward Edge Advisory · ATL</span>
+      <span class="mono">A WOMEN-OWNED · MINORITY-LED FIRM · LAUNCHING FALL '26</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

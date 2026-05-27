@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Insights · Forward Edge</title>
+<link rel="icon" href="assets/fe-mark-black.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .insights-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .ifilter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid rgba(35,40,47,.18);
+    background: transparent;
+    color: var(--color-graphite);
+    padding: 8px 16px;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .ifilter:hover, .ifilter.on {
+    background: var(--color-black);
+    color: var(--color-paper);
+    border-color: var(--color-black);
+  }
+  .feature-memo {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    background: var(--color-paper);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 2px solid var(--color-black);
+    border-top: 4px solid var(--color-edge);
+    box-shadow: 0 8px 40px -12px rgba(20,16,12,0.24);
+  }
+  .feature-memo .img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+  .feature-memo .body {
+    padding: clamp(32px, 4vw, 56px) clamp(28px, 3.5vw, 52px);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .feature-memo h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--color-black);
+  }
+  .feature-memo h2 em { font-style: italic; }
+  .feature-memo p {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--color-graphite);
+    margin: 0;
+    max-width: 52ch;
+  }
+  .feature-memo .head {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .feature-memo .pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid rgba(35,40,47,.18);
+    border-radius: var(--r-pill);
+    padding: 5px 10px;
+    color: var(--color-graphite);
+  }
+  .feature-memo .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    border-top: var(--rule);
+  }
+  @media (max-width: 1100px) {
+    .feature-memo { grid-template-columns: 1fr; }
+    .feature-memo .body { padding: clamp(24px, 3vw, 40px); }
+  }
+
+  /* Subscribe block */
+  .subscribe {
+    background: var(--color-black);
+    color: var(--color-paper);
+    border-radius: var(--r-md);
+    padding: clamp(40px, 5vw, 72px);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .subscribe h3 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+    color: var(--color-paper);
+  }
+  .subscribe h3 em { font-style: italic; color: var(--color-edge); }
+  .subscribe p { color: rgba(244,241,235,.7); font-size: 15px; line-height: 1.5; margin: 0; }
+  .subscribe form {
+    display: flex;
+    gap: 8px;
+    background: rgba(255,255,255,.06);
+    padding: 6px;
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .subscribe input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 10px 16px;
+    color: var(--color-paper);
+    font: inherit;
+    font-size: 14px;
+  }
+  .subscribe input::placeholder { color: rgba(244,241,235,.4); }
+  .subscribe button {
+    background: var(--color-paper);
+    color: var(--color-black);
+    border: 0;
+    padding: 10px 18px;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background .2s;
+  }
+  .subscribe button:hover { background: var(--color-edge); color: var(--color-paper); }
+  @media (max-width: 860px) { .subscribe { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Forward Edge — home">
+      <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="advisory.html">Advisory</a>
+      <a href="how-we-work.html">Approach</a>
+      <a href="insights.html" class="is-current">Insights</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="nav-status"><span class="dot-edge"></span>Briefing — Fall '26</span>
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="meta">
+      <span class="eyebrow">Insights</span>
+      <span class="mono">FE — 400 · MEMOS &amp; BRIEFS</span>
+    </div>
+    <h1>Memos,<br/>not <em>80-page PDFs</em><span class="stop">.</span></h1>
+    <div class="deck">
+      <p>
+        Living research from our advisors on the questions facing government technology
+        leaders right now. Read in nine minutes. Defended in front of the legislature.
+        Filed at the budget hearing.
+      </p>
+      <div class="side">
+        <div><span class="mono">Frequency</span><span class="val">Weekly</span></div>
+        <div><span class="mono">Reading time</span><span class="val">5–12 min</span></div>
+        <div><span class="mono">Format</span><span class="val">Short memo</span></div>
+        <div><span class="mono">Cost</span><span class="val">Free</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="section-pad surface-paper">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">/ FEATURED</span>
+      <div>
+        <h2>This <em>week's</em> brief.</h2>
+      </div>
+    </div>
+
+    <div class="feature-memo reveal">
+      <div class="img photo atmospheric">
+        <span class="placeholder-tag">Photo · 4:3 · CONCEPTUAL</span>
+      <div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div></div>
+      <div class="body">
+        <div class="head">
+          <span class="pill">BRIEF 014 · 9 MIN</span>
+          <span class="mono">AI GOVERNANCE</span>
+        </div>
+        <h2>The first <em>Chief AI Officer</em> every Georgia agency will need by 2027.</h2>
+        <p>And the three things the right one will refuse to do in their first ninety days. A practical field guide for agency heads &mdash; what the role is, what it isn't, and how to hire for the difference.</p>
+        <div class="foot">
+          <span class="mono">— SHEA CAMERON · OCT 14, 2026</span>
+          <a class="arrow-mini" href="#" aria-label="Read brief 014">↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter + grid -->
+<section class="section-pad surface-stone">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">/ ARCHIVE</span>
+      <div>
+        <h2>Every <em>brief</em>.</h2>
+      </div>
+    </div>
+
+    <div class="insights-filter reveal">
+      <button class="ifilter on">All</button>
+      <button class="ifilter">AI Governance</button>
+      <button class="ifilter">Zero-Trust</button>
+      <button class="ifilter">IV&amp;V</button>
+      <button class="ifilter">Cyber</button>
+      <button class="ifilter">Modernization</button>
+      <button class="ifilter">Change</button>
+    </div>
+
+    <div class="memo-grid reveal">
+      <a class="memo-card" href="#">
+        <div class="imgslot"><div class="photo architectural" style="position:absolute;inset:0;border-radius:0;"><img src="assets/photos/memo-zero-trust-2.jpg" alt="" class="photo-img" /></div></div>
+        <div class="head"><span class="pill">BRIEF 013 · 7 MIN</span><span class="mono">ZERO-TRUST</span></div>
+        <h3>Zero-trust roadmaps that <em>survive</em> the budget cycle.</h3>
+        <p class="lede">Why most agency zero-trust programs stall in year two — and the three architectural choices that prevent it.</p>
+        <div class="foot"><span class="mono">— KEN DOUGHERTY</span><span class="arrow-mini">↗</span></div>
+      </a>
+
+      <a class="memo-card" href="#">
+        <div class="imgslot"><div class="photo warm" style="position:absolute;inset:0;border-radius:0;"><img src="assets/photos/memo-ivv-2.jpg" alt="" class="photo-img" /></div></div>
+        <div class="head"><span class="pill">BRIEF 012 · 11 MIN</span><span class="mono">IV&V</span></div>
+        <h3>What an IV&amp;V <em>actually</em> protects against.</h3>
+        <p class="lede">A field guide for executives staring at a six-figure IV&amp;V line item — and what to ask for instead.</p>
+        <div class="foot"><span class="mono">— J. PEFFER</span><span class="arrow-mini">↗</span></div>
+      </a>
+
+      <a class="memo-card" href="#">
+        <div class="imgslot"><div class="photo cool" style="position:absolute;inset:0;border-radius:0;"><img src="assets/photos/memo-cyber-2.jpg" alt="" class="photo-img" /></div></div>
+        <div class="head"><span class="pill">BRIEF 011 · 8 MIN</span><span class="mono">CYBER</span></div>
+        <h3>Cyber readiness in <em>six weeks</em>.</h3>
+        <p class="lede">Why agencies are abandoning 12-month audit cycles for shorter, sharper readiness assessments — and how to scope one well.</p>
+        <div class="foot"><span class="mono">— SHEA CAMERON</span><span class="arrow-mini">↗</span></div>
+      </a>
+
+      <a class="memo-card" href="#">
+        <div class="imgslot"><div class="photo atmospheric" style="position:absolute;inset:0;border-radius:0;"><img src="assets/photos/memo-data.jpg" alt="" class="photo-img" /></div></div>
+        <div class="head"><span class="pill">BRIEF 010 · 6 MIN</span><span class="mono">DATA READINESS</span></div>
+        <h3>The most expensive <em>AI mistake</em> is at procurement.</h3>
+        <p class="lede">How to know whether your data can support the platform you're about to buy — before the contract is signed.</p>
+        <div class="foot"><span class="mono">— A. HARRINGTON</span><span class="arrow-mini">↗</span></div>
+      </a>
+
+      <a class="memo-card" href="#">
+        <div class="imgslot"><div class="photo architectural" style="position:absolute;inset:0;border-radius:0;"><img src="assets/photos/memo-change.jpg" alt="" class="photo-img" /></div></div>
+        <div class="head"><span class="pill">BRIEF 009 · 10 MIN</span><span class="mono">CHANGE</span></div>
+        <h3>Why programs fail at <em>workforce</em>, not technology.</h3>
+        <p class="lede">A pattern observed across four statewide modernization programs — and a checklist for diagnosing it early.</p>
+        <div class="foot"><span class="mono">— KEN DOUGHERTY</span><span class="arrow-mini">↗</span></div>
+      </a>
+
+      <a class="memo-card" href="#">
+        <div class="imgslot"><div class="photo warm" style="position:absolute;inset:0;border-radius:0;"><img src="assets/photos/memo-modernization.jpg" alt="" class="photo-img" /></div></div>
+        <div class="head"><span class="pill">BRIEF 008 · 9 MIN</span><span class="mono">MODERNIZATION</span></div>
+        <h3>The case for <em>boutique</em> in the public sector.</h3>
+        <p class="lede">Why state CIOs are increasingly bypassing the recognized firms for senior boutique teams — and what changes when they do.</p>
+        <div class="foot"><span class="mono">— SHEA CAMERON</span><span class="arrow-mini">↗</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Subscribe -->
+<section class="section-pad surface-paper">
+  <div class="container">
+    <div class="subscribe reveal">
+      <div>
+        <h3>Get the brief in your <em>inbox</em>.</h3>
+        <p>One memo per week. Read in nine minutes. No newsletter padding, no sponsor copy, no unsubscribe wars.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+        <input type="email" placeholder="you@agency.gov" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+        <p>Forward intelligence for the public sector.</p>
+        <div class="footer-coords">ATL · 33.7490°N · 84.3880°W</div>
+      </div>
+      <div class="footer-col">
+        <h4>Advisory</h4>
+        <ul>
+          <li><a href="advisory.html#zero-trust">Zero-Trust</a></li>
+          <li><a href="advisory.html#cyber">Cyber Readiness</a></li>
+          <li><a href="advisory.html#ivv">IV&amp;V</a></li>
+          <li><a href="advisory.html#ai-gov">AI Governance</a></li>
+          <li><a href="advisory.html#data">Data Readiness</a></li>
+          <li><a href="advisory.html#change">Change Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="how-we-work.html">How we work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Start a Conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@forwardedge.co">hello@forwardedge.co</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span class="mono">© 2026 Forward Edge Advisory · ATL</span>
+      <span class="mono">A WOMEN-OWNED · MINORITY-LED FIRM · LAUNCHING FALL '26</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // simple filter UI
+  document.querySelectorAll('.ifilter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.ifilter').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How We Work · Forward Edge</title>
+<link rel="icon" href="assets/fe-mark-black.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--color-black);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 2px solid var(--color-black);
+    box-shadow: 0 8px 40px -12px rgba(20,16,12,0.24);
+  }
+  .principle {
+    background: var(--color-paper);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+    border-top: 3px solid transparent;
+    transition: background .25s ease, border-top-color .25s;
+  }
+  .principle:hover { background: var(--color-stone); border-top-color: var(--color-edge); }
+  .principle:hover .principle-photo img { transform: scale(1.04); }
+  .principle-photo {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--color-graphite);
+    position: relative;
+  }
+  .principle-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.92) brightness(0.95);
+    transition: transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .principle-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, var(--color-paper) 100%);
+    pointer-events: none; transition: background .25s ease;
+  }
+  .principle:hover .principle-photo::after { background: linear-gradient(180deg, rgba(0,0,0,0) 55%, var(--color-stone) 100%); }
+  .principle-body {
+    padding: clamp(20px, 2vw, 28px) clamp(24px, 2.4vw, 32px) clamp(24px, 2.6vw, 32px);
+    display: flex; flex-direction: column; gap: 12px;
+    flex: 1;
+  }
+  .principle .mono { color: var(--color-smoke); }
+  .principle h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-black);
+    max-width: 18ch;
+  }
+  .principle h3 em { font-style: italic; }
+  .principle p { font-size: 14px; line-height: 1.55; color: var(--color-graphite); margin: 0; }
+  @media (max-width: 1100px) { .principles { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .principles { grid-template-columns: 1fr; } }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--color-black);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 2px solid var(--color-black);
+    box-shadow: 0 8px 40px -12px rgba(20,16,12,0.24);
+  }
+  .compare > div { padding: clamp(28px, 3vw, 48px); background: var(--color-paper); border-top: 4px solid transparent; }
+  .compare > div:first-child { border-top: 4px solid var(--color-edge); }
+  .compare > div.themBg { background: var(--color-bone); border-top: 4px solid rgba(35,40,47,.15); }
+  .compare h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-smoke);
+    margin: 0 0 16px;
+    font-weight: 500;
+  }
+  .compare h4.us { color: var(--color-edge); }
+  .compare h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0 0 16px;
+    color: var(--color-black);
+    max-width: 16ch;
+  }
+  .compare h3 em { font-style: italic; }
+  .compare ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .compare li {
+    padding: 12px 0 12px 20px;
+    border-top: var(--rule);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-graphite);
+    position: relative;
+  }
+  .compare li:first-child { border-top: 0; }
+  .compare li.us::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: var(--color-edge);
+    font-weight: 600;
+  }
+  .compare li.them { color: var(--color-smoke); }
+  .compare li.them::before {
+    content: "×";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: var(--color-mist);
+  }
+  @media (max-width: 860px) { .compare { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Forward Edge — home">
+      <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="advisory.html">Advisory</a>
+      <a href="how-we-work.html" class="is-current">Approach</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="nav-status"><span class="dot-edge"></span>Briefing — Fall '26</span>
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="meta">
+      <span class="eyebrow">How we work</span>
+      <span class="mono">FE — 300 · ENGAGEMENT MODEL</span>
+    </div>
+    <h1><em>Four</em> moves,<br/>repeated on <em style="font-style: italic; color: var(--color-ink);">every</em> engagement<span class="stop">.</span></h1>
+    <div class="deck">
+      <p>
+        No theatrics. No 80-page deck nobody reads. Just a senior team, embedded for the time
+        it takes to deliver something the agency can defend &mdash; and then gone.
+      </p>
+      <div class="side">
+        <div><span class="mono">Engagement length</span><span class="val">2–16 weeks</span></div>
+        <div><span class="mono">Team size</span><span class="val">2–4 senior</span></div>
+        <div><span class="mono">Deliverable</span><span class="val">Memo, always</span></div>
+        <div><span class="mono">Embed depth</span><span class="val">Through budget cycle</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The four steps (uses .steps from styles.css) -->
+<section class="section-pad surface-paper">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">/ 01 APPROACH</span>
+      <div>
+        <h2>The <em>four moves</em>.</h2>
+      </div>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <span class="num">i.</span>
+        <h3>Listen at <em>the source</em>.</h3>
+        <p>Two weeks inside the agency: shadow the operators, read the procurement file, sit in on legislative briefings. We start by understanding your reality &mdash; not your reference architecture. No surveys.</p>
+      </div>
+      <div class="step">
+        <span class="num">ii.</span>
+        <h3>Map the <em>seam</em>.</h3>
+        <p>We render the system as it really runs &mdash; people, policy, platforms &mdash; and find the seams where technology and process change compound. The output is a working diagram, not a 200-slide map.</p>
+      </div>
+      <div class="step">
+        <span class="num">iii.</span>
+        <h3>Ship the <em>smallest real thing</em>.</h3>
+        <p>A pilot the commissioner can defend in front of the legislature, the comptroller, and the constituent &mdash; in that order. We measure success in working systems, not deliverables.</p>
+      </div>
+      <div class="step">
+        <span class="num">iv.</span>
+        <h3>Run <em>alongside</em>.</h3>
+        <p>We stay embedded through the first budget cycle, transferring the engine to your team as we go. We leave when you don't need us &mdash; not when the contract runs out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Editorial photo -->
+<section class="section-pad-sm surface-paper">
+  <div class="container">
+    <div class="photo cool reveal is-soft" style="aspect-ratio: 21/9; border-radius: var(--r-md);"><img src="assets/photos/how-we-work-break.jpg" alt="" class="photo-img" />
+      <span class="placeholder-tag">Photo · 21:9 · Working environment, paper documents, no people</span>
+      <div class="photo-mark"><div class="photo-mark-wrap"><span class="ring">photo</span></div></div><div class="caption">
+        <span>The work happens in <em style="color: var(--color-edge);">memos</em> —<br/>read aloud, defended at the table.</span>
+        <span class="mono" style="font-family: var(--font-mono); font-style: normal; font-size: 11px; letter-spacing: .14em; color: rgba(244,241,235,.7);">FE-IE / V0.4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Principles -->
+<section class="section-pad surface-stone">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">/ 02 PRINCIPLES</span>
+      <div>
+        <h2>Six <em>principles</em><br/>we won't trade away.</h2>
+      </div>
+    </div>
+
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-photo"><img src="assets/photos/principle-1-seniors.jpg" alt="" /></div>
+        <div class="principle-body">
+          <span class="mono">/ 01</span>
+          <h3>Seniors on <em>every</em> meeting.</h3>
+          <p>The partner who scoped the engagement is the partner who runs it. No bait-and-switch.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-photo"><img src="assets/photos/principle-2-partnerships.jpg" alt="" /></div>
+        <div class="principle-body">
+          <span class="mono">/ 02</span>
+          <h3>Built on <em>partnerships</em>.</h3>
+          <p>We collaborate with lobbyists, former agency leaders, contractors, and specialist firms to assemble the right team for your mission.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-photo"><img src="assets/photos/principle-3-memos.jpg" alt="" /></div>
+        <div class="principle-body">
+          <span class="mono">/ 03</span>
+          <h3>Memos, <em>not decks</em>.</h3>
+          <p>Our deliverables are five to twelve pages. Read aloud. Defended at the table. Filed for the budget hearing.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-photo"><img src="assets/photos/principle-4-embed.jpg" alt="" /></div>
+        <div class="principle-body">
+          <span class="mono">/ 04</span>
+          <h3>Embed, <em>then leave</em>.</h3>
+          <p>We stay long enough to transfer ownership. We leave when you don't need us &mdash; not when the SOW expires.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-photo"><img src="assets/photos/principle-5-standard.jpg" alt="" /></div>
+        <div class="principle-body">
+          <span class="mono">/ 05</span>
+          <h3>One <em>standard</em>.</h3>
+          <p>State, local, federal &mdash; same rigor. The constituent doesn't care which procurement vehicle you used.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-photo"><img src="assets/photos/principle-6-defensible.jpg" alt="" /></div>
+        <div class="principle-body">
+          <span class="mono">/ 06</span>
+          <h3>Defensible <em>by design</em>.</h3>
+          <p>Every recommendation has to survive the budget hearing, the inspector general, and the local newspaper. We test it for all three.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Compare us vs them -->
+<section class="section-pad surface-paper">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">/ 03 WHY US</span>
+      <div>
+        <h2>The boutique <em>difference</em>.</h2>
+        <p class="deck">
+          You've worked with the recognizable firms. Here's the difference, in plain terms.
+        </p>
+      </div>
+    </div>
+
+    <div class="compare reveal">
+      <div>
+        <h4 class="us">— FORWARDEDGE</h4>
+        <h3>What you <em>get</em>.</h3>
+        <ul>
+          <li class="us">Partner-led from kickoff to close</li>
+          <li class="us">Independent advice, partnership-enabled</li>
+          <li class="us">2–4 person senior team, embedded</li>
+          <li class="us">Memo deliverables, not slide stacks</li>
+          <li class="us">Embedded through the budget cycle</li>
+          <li class="us">Fixed-price, defined scope</li>
+          <li class="us">Atlanta-based, public-sector native</li>
+        </ul>
+      </div>
+      <div class="themBg">
+        <h4>— THE LARGE FIRM</h4>
+        <h3>What you <em>used</em> to settle for.</h3>
+        <ul>
+          <li class="them">Sales partner attends kickoff, then disappears</li>
+          <li class="them">Locked into one platform stack</li>
+          <li class="them">10+ junior consultants billed at senior rates</li>
+          <li class="them">300-slide decks that restate your inputs</li>
+          <li class="them">Gone the day the SOW closes</li>
+          <li class="them">T&amp;M, scope creep, change orders</li>
+          <li class="them">Global firm, generic playbook</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section-pad surface-stone">
+  <div class="container">
+    <div class="how-grid reveal">
+      <div class="how-card">
+        <span class="num">14d</span>
+        <h3>To first pilot,<br/>from <em>brief</em>.</h3>
+        <p>From the first conversation to a working pilot, signed off by counsel.</p>
+      </div>
+      <div class="how-card">
+        <span class="num">200d</span>
+        <h3>Embedded horizon.</h3>
+        <p>Through the first full budget cycle. We leave when you don't need us.</p>
+      </div>
+      <div class="how-card">
+        <span class="num">∞</span>
+        <h3>Strategic <em>partnerships</em>.</h3>
+        <p>A trusted network of former agency leaders, lobbyists, and specialist firms — assembled around your engagement.</p>
+      </div>
+      <div class="how-card">
+        <span class="num">04</span>
+        <h3>Senior <em>partners</em>.</h3>
+        <p>Every engagement has a named partner. The same one. From kickoff to close.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End CTA -->
+<section class="section-pad surface-paper">
+  <div class="container end-cta">
+    <div class="row reveal">
+      <h3>Tell us about <em>your</em> engagement.</h3>
+      <a class="btn btn-primary" href="contact.html">Start a Conversation<span class="btn-arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div class="footer-col footer-brand">
+        <img src="assets/fe-lockup-black.png" alt="Forward Edge" />
+        <p>Forward intelligence for the public sector.</p>
+        <div class="footer-coords">ATL · 33.7490°N · 84.3880°W</div>
+      </div>
+      <div class="footer-col">
+        <h4>Advisory</h4>
+        <ul>
+          <li><a href="advisory.html#zero-trust">Zero-Trust</a></li>
+          <li><a href="advisory.html#cyber">Cyber Readiness</a></li>
+          <li><a href="advisory.html#ivv">IV&amp;V</a></li>
+          <li><a href="advisory.html#ai-gov">AI Governance</a></li>
+          <li><a href="advisory.html#data">Data Readiness</a></li>
+          <li><a href="advisory.html#change">Change Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="how-we-work.html">How we work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Start a Conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@forwardedge.co">hello@forwardedge.co</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span class="mono">© 2026 Forward Edge Advisory · ATL</span>
+      <span class="mono">A WOMEN-OWNED · MINORITY-LED FIRM · LAUNCHING FALL '26</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
